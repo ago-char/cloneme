@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input type</title>
+</head>
+<body>
+    <header>
+        <h2>button, checkbox, color, date, datetime-local, email, file, hidden, image, month, number, password, radio, range, reset, search, submit, tel, text, time, url, week</h2><hr>
+    </header>
+    <main>
+        <!-- section 0 search functionality -->
+         <section id="0search">
+            <form action="">
+                <input type="search" placeholder="Search Anything in this Internet World" style="width: 444px;">
+                <input type="submit" value="Search">
+            </form>
+         </section><hr>
+        <!-- section 1 == login -->
+        <section id="1login">
+            <big>LOGIN SECTION</big><br>
+            <form action="" method="post">
+            <!-- username  -->
+            <label for="userId">User:</label>
+            <input type="text" required placeholder="text"><br>
+            <!-- email address  -->
+            <label for="email">Email:</label>
+            <input type="email" required placeholder="email"><br>
+            <!-- phone num  -->
+            <label for="phone">Phone:</label>
+            <input type="tel" required placeholder="tel"><br>
+            <!-- secret file to login (specified at the time of login)  -->
+            <label for="secretfile">SecretFile:</label>
+            <input type="file" required><br>
+            <!-- password -->
+                <label for="password">Pass:</label>
+                <input type="password" required placeholder="password"><br>
+            <!-- submit now  -->
+            <input type="submit" required value="LOGIN CLICK HERE" style="background-color: skyblue;">
+        </form>
+        </section><hr>
+        <!-- section 2 == setting up resolution level and color for page  -->
+        <section id="2preferences">
+            <!-- div for resolution settings  -->
+            <p>Some Settings:</p>
+            <div>
+                <label for="resolution">Choose a comfortable Resolution:</label><br />
+                <input type="range" id="resolution" name="resolution" list="markers"/>
+                <datalist id="markers">
+                  <option value="0"></option>
+                  <option value="25"></option>
+                  <option value="50"></option>
+                  <option value="75"></option>
+                  <option value="100"></option>
+                </datalist>
+                
+            </div>
+            <!-- div for color settings  -->
+            <div>
+                <input type="color" value="#e66465">
+                <label for="color">Fav Color</label>
+            </div>
+            <!-- div for time seting  -->
+            <div>
+                <label for="time">Arrival:</label>
+                <input type="time" min="06:00" max="21:00"> <small>When you arrive ?</small>
+            </div>
+            <!-- datetime-local now  -->
+            <div>
+            <label for="localtime">LocalTime:</label>
+            <input
+                type="datetime-local"
+                id="meeting-time"
+                name="meeting-time"
+                value="2018-06-12T19:30"
+                min="2018-06-07T00:00"
+                max="2018-06-14T00:00"
+            />
+            <small>Appointment of Meeting</small>
+            </div>
+            <!-- div for checkbox i.e your likes  -->
+             <div>
+                <p>Your Likes in Sports :</p>
+                <label for="cricket">Cricket</label>
+                <input type="checkbox">
+                <label for="football">Football</label>
+                <input type="checkbox">
+                <label for="wrestling">Wrestling</label>
+                <input type="checkbox">
+                <label for="Racing">Racing</label>
+                <input type="checkbox">
+             </div><br>
+            <!-- div for selective love ones  -->
+            <div>
+                <form action="" method="post">
+                <fieldset>
+                    <legend>If you Have to Choose one ?</legend>
+                    <!-- actually name attrib inside input tag defines the grouping of radio buttons  -->
+                    <input type="radio" name="fav">
+                    <label for="ABD">ABD</label>
+                    <input type="radio" name="fav">
+                    <label for="MSD">MSD</label>
+                    <input type="radio" name="fav">
+                    <label for="LeoMessi">LeoMessi</label>
+                    <input type="submit" style="margin-left: 10px;" value="Choose">
+                </fieldset> 
+                </form>
+            </div>
+        </section><hr>
+    </main>
+</body>
+</html>

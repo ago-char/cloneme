@@ -1,0 +1,17 @@
+# there is no such char data type in python hence : a='C' is string 
+string="Let's code in python"
+num=5
+floating=5.5
+boolean=True
+nothing=None
+list1 = [8, 2.3, [-4, 5], ["apple", "banana"]]
+tuple1 = (("parrot", "sparrow"), ("Lion", "Tiger"))
+dict1 = {"name":"Sakshi", "age":20, "canVote":True}
+print(string,type(string),sep="-----")
+print(num, type(num),sep="-----")
+print(floating,type(floating),sep="-----")
+print(boolean,type(boolean),sep="-----")
+print(nothing,type(nothing),sep="-----")
+print(list1,type(list1),sep="-----")
+print(tuple1,type(tuple1),sep="-----")
+print(dict1,type(dict1),sep="-----")

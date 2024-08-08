@@ -1,0 +1,62 @@
+# You have to understand that WSL instance is not in your local area network meaning it is not getting ip address directly from router in your home. It is a virtual machine. You can imagine some sort of machine connected from your PC using ethernet.
+
+# WSL uses virtual ethernet adapter you can verify it in the <vEthernetWSL.jpg>where as your windows machine use different wifi adapter as on <WifiAdapter.jpg>, this is where you can know that they are not in same LAN
+
+# The problem hereby is that we want to access some sort of service running on WSL instance from any computer in our LAN. As WSL works on virtual ethernet adapter, there is no way you gonna plug in cable from any computers in your LAN, as its only interface is already virtually connected to host machine. So how we gonna solve it ? Well, use of portproxy.
+
+# What the heck is portproxy ? Host will forward everything on prot p to the port p' of WSL. As all PCs in LAN can reach Host, they will tell host PC to talk on port p. Host then will forward that talk to WSL on port p'. Here host is working in between LAN and WSL
+
+# Now I will talk about commands, make sure you are admin
+# To add portproxy
+netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=2222 connectaddress=localhost connectport=22
+
+# make sure it is added <portProx.jpg>
+netsh interface portproxy show all
+
+# make sure 2222 port is listening on host, see <hostPortListening.jpg>
+netstat -ano | findstr :2222
+
+# Don't worry, I will break down but not going into details. It is actually establishing a proxy a kind of bridge which use IPv4 meaning that both end is using IPv4 protocol. Host will listen on 0.0.0.0 which is wildcard for all ip address. This may be drawback, if you are aware that certain PC with specific IP address will only be connecting, then it is worth replacing with that specific PC's ip address. As there is no facility to specify whole network, I supply 0.0.0.0 . Make sure your firewall is strong enough. Host is waiting for connection in port 2222 which will then forward to 'localhost'. Why localhost and why not IP Address of WSL instance? Because IP Address of WSL instance is not static, it's dynamic. Finally, WSL will be waiting for connection in port 22.
+
+# I started ssh service on WSL, of course you can use anothre service
+systemctl start sshd
+
+# Verify it , you should see 'running', see <sshServiceStatus.jpg>
+systemctl status sshd
+
+# Now trying to access service from my machine in LAN, we should now be connected to WSL server running ssh, as 192.168.1.94 will forward connection it receives on 2222 to 22 of WSL where username is doctor.
+ssh -v -p 2222 doctor@192.168.1.94
+
+# oh dear, what has just happened screen stops for some time and throws connection time lost error. see <connTimeout.jpg>
+# Nevermind. We have not allowed inbound connection on Host at port 2222, so let's do it:
+netsh advfirewall firewall add rule name="wsl ssh" dir=in action=allow protocol=TCP localport=2222
+
+# Check if rule is added, make sure you remember rule's name. You can see it  on firewall settings or use combo of cmd and notepad:
+netsh advfirewall firewall show rule name=all > rules.txt
+notepad rules.txt
+
+# search for string "wsl ssh", you will see many details like <verifyFirewallNotepad.jpg>
+# just for in case you do not want to use any GUI:
+netsh advfirewall firewall show rule name=all | find "wsl ssh"
+# if you get someting like <verifyFirewallCmd.jpg> you are good to go
+
+# do not hesitate to connect to server from another PC again:
+ssh -v -p 2222 doctor@192.168.1.94
+
+# Well done, it's done and dusted: see <doneAndDusted.jpg>
+
+
+
+# after your task completion you may wanna delete portproxy
+netsh interface portproxy delete v4tov4 listenaddress=0.0.0.0 listenport=2222
+
+# and firewall rules too
+netsh advfirewall firewall delete rule name="wsl ssh"
+
+# you may wanna host stop listening to port 2222
+taskkill /pid  <pid> /f   
+# you can get pid at last column from the output of 
+netstat -ano | findstr :2222   # see <hostPortListening.jpg>
+
+# and stop ssh service
+systemctl stop sshd

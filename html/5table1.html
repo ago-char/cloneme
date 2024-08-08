@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 20%;
+            text-align: center;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <header><h1>Using Tables in html</h1></header><hr>
+    <main>
+        <!-- first sect  -->
+         <section id="1">
+            <!-- first table  -->
+             <table id="1" border="1">
+                <caption><b style="font-size: large;color: green;">STUDENT</b></caption>
+                <thead>
+                    <tr>
+                        <!-- define headings of the table  -->
+                       <th scope="col">Roll</th> 
+                       <th scope="col">Class</th>
+                       <th scope="col">Name</th>
+                    </tr>
+                    </thead>
+                <tbody>
+                    <tr>
+                        <!-- data for first row -->
+                        <td>1</td> <!--better use <th scope="row">data</th> for first col of each row-->
+                        <td>9</td>
+                        <td>Smarika</td>
+                    </tr>
+                    <tr>
+                        <!-- data for second row  -->
+                         <td>2</td>
+                         <td>8</td>
+                         <td>Deeya</td>
+                    </tr>
+                    <tr>
+                        <!-- data for third row  -->
+                         <td>1</td>
+                         <td>7</td>
+                         <td>Deepa</td>
+                    </tr>
+                    <tr>
+                        <!-- data for fourth row -->
+                         <td>2</td> 
+                         <td>8</td>
+                         <td>Anjana</td>
+                    </tr>
+                </tbody>
+             </table>
+         </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Learn git from basics... not in depth but regular commands and some fundamental information about git (and github)

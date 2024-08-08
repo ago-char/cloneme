@@ -1,0 +1,8 @@
+
+|   student  |      marks         |   tot   |
+|roll | name | eng | nep | maths  |      al |
+|     |      |     |     |        |         |
+|     |      |     |     |        |         |
+|     |      |     |     |        |         |
+|   total    |     |     |        |         |
+

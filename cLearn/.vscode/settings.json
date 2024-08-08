@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "string.h": "c",
+        "threads.h": "c",
+        "thread-shared-types.h": "c",
+        "time.h": "c",
+        "math.h": "c",
+        "cmath": "cpp",
+        "pthread.h": "c",
+        "pthreadtypes.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "enabledIfIncludesResolve"
+}

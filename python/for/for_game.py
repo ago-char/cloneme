@@ -1,0 +1,2 @@
+# in the list of foods give customer to guess the food name, the hint will just be first and last letter. Check if customer guesses correctly if correct reward if not wait for certain time before retry
+# import time for time.sleep  

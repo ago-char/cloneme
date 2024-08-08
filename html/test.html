@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test input controls</title>
+</head>
+
+<body>
+    <section>
+        <p>
+            <big><b>Just a button</b></big>
+        </p>
+        <input type="button" value="input type button" />
+        <button>html tag button</button>
+    </section>
+    <hr />
+
+    <section>
+        <p>
+            <big><b>Now the checkbox</b></big>
+        </p>
+        <input type="checkbox" name="Sports" /><label for="Sports">Sports</label>
+        <input type="checkbox" name="Entertainment" id="fun" /><label for="fun">Fun</label>
+    </section>
+    <hr />
+
+    <section>
+        <p>
+            <big><b>Using datalist and option ofc (use for suggestions when user start
+                    typing in the field)</b></big>
+        </p>
+        <form action="" method="post">
+            <label for="cricketer">Cricketer you like or admire the most ? ==&gt;</label>
+            <input type="text" list="cricketer" required />
+            <datalist id="cricketer">
+                <option value="Jos Buttler"></option>
+                <option value="AB Devillers"></option>
+                <option value="Ms Dhoni"></option>
+                <option value="DJ Bravo"></option>
+            </datalist>
+            <input type="submit" value="Click on Done" style="margin-left: 10px" />
+        </form>
+    </section>
+    <hr />
+
+    <section>
+        <p>
+            <big><b>Comming for DropDown to Choose Your Ward Num (using </b></big>
+        </p>
+        <label for="Ward">Select Ward Num:</label>
+        <!-- <input list="sh-wards" name="sh-wards" id="sh-wards"> -->
+        <select name="Ward" id="sh-wards">
+            <option value="">What is your Ward Number ? Select</option>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+            <option value="four">4</option>
+            <option value="five">5</option>
+            <option value="six">6</option>
+            <option value="seven">7</option>
+            <option value="eight">8</option>
+            <option value="nine">9</option>
+            <option value="ten">10</option>
+            <option value="eleven">11</option>
+            <option value="twelve">12</option>
+            <option value="thirteen">13</option>
+        </select>
+    </section>
+    <hr />
+
+</body>
+
+</html>

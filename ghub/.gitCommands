@@ -1,0 +1,134 @@
+# to work with git, you must first initialize it...to check if git is initialized :
+git status
+
+# if this throws fatal error: it is not initialized else yes. It shows modified/tracked/commited files info, you can always initialize git using following command which will create ".git" directory which is hidden
+git init
+
+
+# once you init git, your dir will be git repo and all files will be on untracked state so you want git to track the files so that it will help to identify modification. These will add all and specific files from git repo
+git add -A|--all 
+git add <filename>
+
+# list files tracked by git
+git ls-files
+
+
+# this is only for first time that you let know git to track your files, any modification will be marked as "modified". Actually the above command (git add -A|--all|<filename>) does put files in stagging area too meaning they are ready to commit
+# you can either commit the changes you made
+git commit -m "<commit_message>"
+# or you can remove them from stagging area (only if no commits has been made yet)
+git rm --cached <filename>
+# if commit has already been made use any of them but you can not use the second one if certain version of <filename> is on stagging area and it has been modified now
+git restore --staged <filename>
+git rm --cached <filename>
+
+
+# while working on git, you may want to restore file from stagging area to working area meaning that you made unwanted change. For eg: you make some changes and put file in stagging area. Now you were working on some other modification but unfortunately you lost code or maybe previous version stagged was better. You right now has 2 version. One is stagged and another is what you are working. You do not want your working crap and wanna restore stagged you can :
+git restore <filename>
+git checkout -- <filename>
+
+# how about having 10 different versions. 8 commited, 1 stagged, 1 working. Learn different ways
+# restore from stagged area 
+git restore <filename>
+git checkout -- <filename>
+# restore from latest commit
+git checkout -- <filename>
+git checkout HEAD -- <filename>
+# restore from 1 commit back
+git checkout HEAD^ -- <filename>
+# restore form 2 commit back
+git checkout HEAD^^ <filename>
+# restore from Nth commit back suppose N be 6
+git checkout HEAD~6 -- <filename>
+# restore from certain commit_ID
+git checkout <commit_ID> -- <filename>
+
+
+# but to get commit ID you need to see log of commits, there are number of ways to find out let's see:
+# this will show commit hash, author,commiter, message
+git log
+git log --pretty=full
+# to get samething but without commiter
+git log --pretty=short
+# to view log with diff command output append -p
+git log -p
+# append above command with -<N> to get <N> commits with output of diff. for eg: this will get 1 commit log
+git log -p -1
+# to get log in one line for specific commit with abbriviated commit hash/ID and message
+git log --oneline
+# samething with full commit hash is achieved as
+git log --pretty=oneline
+# get log abbrib commit hash, comment/message and files commited
+git log --name-only --oneline
+# get log using specific time period
+# git log --since=N.{minutes|hours|days|weeks|months|years} where <N> is specific number,if you want log of last 7 weeks you can
+git log --since=7.weeks
+# get log in specific format, specify format from website: https://git-scm.com/docs/pretty-formats
+git log --pretty=format:"<format>"
+# as an example you want <Abbriviated_commitID> -- <authourName> i.e 1234578 -- ram you can
+git log --pretty=format:"%h -- %an"
+# try this too
+git ls-tree --name-only -r <commit_ID>
+git config --global alias.<ALIAS> "what_to_alias" 
+
+
+
+# you can work on different branches by creating, switching between branches and merging them as issues are solved
+# create branch using
+git chekcout -b <newBranchName>
+# this will help you see branch list 
+git branch
+# more verbose information about branches list 
+git branch -v
+# switch between branches 
+git checkout <branchName>
+# merge current branch with <branchName>
+git merge <branchName>
+# delete branch using in case if you need to: please make sure if it has been merged because the intention of creating branch is to merge after some topic is solved (if no merged it throws error)
+git branch -d <branchName>
+# in case you really wanna delete branch, force delete with uppercase D
+git branch -D <branchName>
+# view branches which are already meged 
+git branch --merge
+# view branches which are not merged yet. This can be helpful before removal of branches 
+git branch --no-merge
+
+
+# for pushing and pulling code or files from remote repo, you need to add some remote repo which can be any remote repo but the popular one is github of course 
+# add remote repo
+git remote add <Alias_for_REpo> <url_repo>
+# for example which means 'https://github.com/ram/sample.git' can be referred to by 'origin'
+git remote add origin https://github.com/ram/sample.git
+# view remote using 
+git remote
+# push your code/commit to remote repo 
+git push -u <Alias_for_REpo> <branch>[:<branch_on_remote>]
+# to push commit from local branch "master" to remote branch "master" in 'https://github.com/ram/sample.git' aka 'origin'
+git push -u origin master
+# to push commit from local branch "master" to remote branch "main" in 'https://github.com/ram/sample.git' aka 'origin'
+git push -u origin master:main
+
+# while deleting please make sure that the branch you are going to delete is not default branch. if it is so you may need to create another branch on github and make it default and delete. As 'master' branch is default in gitbub. Make branch 'tmp' and ask it to be default and go delete branch master as : git push -d origin master 
+# delete branch in remote 
+git push -d (<Alias_for_remote>|<remote>} <branch_on_remote> 
+# to delete "master" branch from github you can 
+git push -d https://github.com/ram/sample.git master
+# but https://github.com/ram/sample.git is pointed by origin so 
+git push -d origin master # does the same
+
+# if commit hash is '123446' and filename is 'file' to get the content of 'file' at the point of commit '123446'
+git show 123446:file
+
+# To examine the reflog, which logs all changes to the Git repository, including merges:
+git reflog
+
+# to explicitly merge commit to encounter the effect of 'fast forward' merge you can :
+git merge --no-ff <branch>
+
+# to check history including merges
+git log --merges
+
+# for no merge just prefix with 'no'
+git log -no-merges
+
+#EOFBroOk

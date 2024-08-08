@@ -1,0 +1,8 @@
+x = ("key1", "key2", "key3")
+y = ("val1", "val2", "val3")
+thisdict = dict.fromkeys(x)
+print(thisdict)
+thisdict = dict.fromkeys(x, 1)
+print(thisdict)
+thisdict = dict.fromkeys(x, y)
+print(thisdict)

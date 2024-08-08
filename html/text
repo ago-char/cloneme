@@ -1,0 +1,19 @@
+|           |   |
+|       |   |   |
+|   |       |   |
+
+
+Build the table structure like up using html. Don't describe just code.
+
+
+|   |   |   |
+|   |   |   |
+|   |   |   |
+
+wrong: it results above one, not which i mentioned.
+
+let me explain.
+The table has total 3 rows but cols per row vary. 
+First row has 2 columns, as 1st col takes 3 unit space & 2nd col takes 1 unit space.
+Second row has 3 columns, as 1st col takes 2 unit space, 2nd & 3rd col take 1 unit space each.
+Third row has 3 columns, as 1st col takes 1 unit space, 2nd col takes 2 unit space & 3rd col takes 1 unit space.

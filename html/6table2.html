@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization of Table</title>
+    <!--
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 20%;
+            text-align: center;
+            margin:0 auto;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+-->
+<style>
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin: 0 auto;
+    }
+    table, th, td {
+        border: 1px solid black;
+        padding: 4px;
+        text-align: center;
+    }
+    th:not([id="1"]) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+</head>
+<body>
+    <header id="top">
+        <h2 style="text-align: center;"><u>Organization of Table</u></h2>
+        <p>It just means how table head, body and footer are organized and kept in perfect order. Not only this how attributes of tr, th, td are set. Defining the scope of column/row and everything are subtopic under this. And for this we are going to take example of Result table for class 10 students.</p><hr>
+    </header>
+    <main>
+        <p style="text-align: center;">Starting with image what of <big><b><i>RESULT TABLE</i></b></big> we are wanting:</p>
+        <!-- section 1 for showing image of table  -->
+         <section id="1">
+            <img src="images/table2.JPG" alt="collapsed table of student marks" style="display: block;margin: auto;">
+         </section><hr>
+
+         <!-- section 2 for table "RESULT" -->
+          <section id="2">
+            <table>
+                <caption style="color: rgb(44, 9, 240);">
+                    <big style="font-size: 21px;"><b>CLASS-10 RESULT 2020</b></big>
+                </caption>
+                <thead>
+                    <!-- remember each line is one row  -->
+                    <!-- student marks total -->
+                    <!-- main row here  -->
+                    <tr>
+                         <th scope="col" colspan="2">Student</th>
+                         <th scope="col" colspan="3">Marks</th>
+                         <th scope="col" rowspan="2">Total</th>
+                    </tr>
+                    <!-- roll name eng nep maths  -->
+                     <!-- sub row here  -->
+                    <tr>
+                        <th scope="col">Roll_No</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">English</th>
+                        <th scope="col">Nepali</th>
+                        <th scope="col">Maths</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                    <!-- now fill the data  -->
+                    <!-- student1 -->
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Smarika</td>
+                        <td>10</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>29</td>
+                    </tr>
+                    <!-- student2 -->
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Deeya</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>28</td>
+                    </tr>
+                    <!-- student3 -->
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Deepa</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>8</td>
+                        <td>26</td>
+                    </tr>
+                    <!-- student4 -->
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>Anjana</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>9</td>
+                        <td>27</td>
+                    </tr>
+                    </tbody>
+                    <tfoot style="color: green; background-color:rgb(165, 149, 165);">
+                        <tr>
+                            <th id="1" rowspan="2" colspan="2">TOTAL</th>
+                            <th id="1" rowspan="2">36</th>
+                            <th id="1" rowspan="2">37</th>
+                            <th id="1" rowspan="2">37</th>
+                            <th id="1" rowspan="2">110</th>
+                        </tr>
+                        <!-- <tr></tr> if this is commented button border will not be covered why ? because rowspan is 2 so need at one more row (empty of full but in this case empty) -->
+                         <tr></tr><!--This is must-->
+                    </tfoot>
+            </table>
+          </section><hr>
+    </main>
+    <footer>
+        <h2 style="text-align: center;">Done and Dusted <a href="#top" style="background-color: rgb(13, 199, 231);">GOTO TOP</a></h2>
+    </footer>
+</body>
+</html>

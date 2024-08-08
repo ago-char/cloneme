@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "pthread.h": "c"
+    },
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/**",
+        "/usr/include/*",
+        "usr/lib/"
+    ]
+}
